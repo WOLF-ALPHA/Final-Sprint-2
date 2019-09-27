@@ -40,3 +40,28 @@ do wr
 ip route 172.16.0.1 255.240.0.0 201.187.89.9
 ip route 192.16.0.1 255.240.0.0 201.187.89.9
 do wr
+
+
+
+
+
+enable
+configure terminal
+hostname RT-01
+interface gigabitEthernet 0/1
+no shutdown
+interface gigabitEthernet 0/1.10
+encapsulation dot1q 10
+ip address 192.168.0.1 255.255.255.224
+ip helper-address 192.168.0.69
+description GATEWAY VLAN 10
+interface gigabitEthernet 0/1.20
+encapsulation dot1q 20
+ip address 192.168.0.33 255.255.255.224
+ip helper-address 192.168.0.69
+description GATEWAY VLAN 20
+interface gigabitEthernet 0/1.100
+encapsulation dot1q 100
+ip address 192.168.0.65 255.255.255.224
+description GATEWAY VLAN 100
+do wr
